@@ -146,6 +146,14 @@ namespace ionet
                 }
 
             }
+            else if(clients[connfd].args[0]==string("quit"))
+            {
+                Logger::logging(Logger::TRACE,__FILE__,__LINE__, "Client %d exit....",connfd);
+                vector<string> v(3,string());
+                clients[connfd].args.swap(v);//删除connfd对应的client上的字符串
+                loop->delEvent(connfd, Ionet::IONET_READ);
+                return ;
+            }
             else{
                 clients[connfd].outbuf=string("wrong command\r\n");
             }
