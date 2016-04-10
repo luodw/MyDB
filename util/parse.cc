@@ -11,7 +11,7 @@ namespace ionet
 {
     Parse::Parse(const char* q)
     {
-        query=(char*)malloc(sizeof(q)+1);
+        query=(char*)malloc(strlen(q)+1);
         strcpy(query,q);
     }
     Parse::~Parse()
